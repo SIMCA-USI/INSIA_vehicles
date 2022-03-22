@@ -3,7 +3,7 @@ from traceback import format_exc
 
 import rclpy
 import yaml
-from insia_msg.msg import StringStamped, BoolStamped, IntStamped, Telemetry, ControladorFloat, EPOSDigital
+from insia_msg.msg import StringStamped, BoolStamped, IntStamped, Telemetry, ControladorFloat, EPOSDigital, EPOSConsigna
 from numpy import interp
 from rclpy.node import Node
 from rclpy.parameter import Parameter
@@ -45,8 +45,8 @@ class SteeringNode(Node):
         self.pub_enable_steering = self.create_publisher(msg_type=EPOSDigital, topic='/' + vehicle_parameters[
             'id_vehicle'] + '/EPOS_Volante/Digital', qos_profile=HistoryPolicy.KEEP_LAST)
 
-        self.pub_target = self.create_publisher(msg_type=IntStamped, topic='/' + vehicle_parameters[
-            'id_vehicle'] + '/EPOS4_Volante/TargetTorque', qos_profile=HistoryPolicy.KEEP_LAST)
+        self.pub_target = self.create_publisher(msg_type=EPOSConsigna, topic='/' + vehicle_parameters[
+            'id_vehicle'] + '/EPOS_Volante/TargetPosition', qos_profile=HistoryPolicy.KEEP_LAST)
 
         self.timer_heartbit = self.create_timer(1, self.publish_heartbit)
 
@@ -62,9 +62,9 @@ class SteeringNode(Node):
             io_digital=4
         ))
         if self.controller.enable:
-            self.pub_target.publish(IntStamped(
+            self.pub_target.publish(EPOSConsigna(
                 header=Header(stamp=self.get_clock().now().to_msg()),
-                data=int(interp(self.controller.target, (-1, 1), self.device_range))
+                position=int(interp(self.controller.target, (-1, 1), self.device_range))
             ))
 
     def publish_heartbit(self):
@@ -90,9 +90,9 @@ class SteeringNode(Node):
                 io_digital=4
             ))
             # Poner target de motor a 0 por si acaso
-            self.pub_target.publish(IntStamped(
+            self.pub_target.publish(EPOSConsigna(
                 header=Header(stamp=self.get_clock().now().to_msg()),
-                data=int(interp(0, (-1, 1), self.device_range))
+                position=int(interp(0, (-1, 1), self.device_range))
             ))
         except Exception as e:
             self.logger.error(f'Exception in shutdown: {e}')

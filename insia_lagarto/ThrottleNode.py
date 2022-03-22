@@ -38,28 +38,24 @@ class ThrottleNode(Node):
                                                   topic='/' + vehicle_parameters['id_vehicle'] + '/Heartbit',
                                                   qos_profile=HistoryPolicy.KEEP_LAST)
 
-        self.pub_enable_throttle = self.create_publisher(msg_type=EPOSDigital,
-                                                         topic='/' + vehicle_parameters['id_vehicle'] + '/iodigital',
-                                                         qos_profile=HistoryPolicy.KEEP_LAST)
+        self.pub_enable_throttle = self.create_publisher(msg_type=BoolStamped, topic='/' + vehicle_parameters[
+            'id_vehicle'] + '/CANADAC_Acelerador/Enable', qos_profile=HistoryPolicy.KEEP_LAST)
 
-        self.pub_target = self.create_publisher(msg_type=IOAnalogue,
-                                                topic='/' + vehicle_parameters['id_vehicle'] + '/ioanalogue',
-                                                qos_profile=HistoryPolicy.KEEP_LAST)
+        self.pub_target = self.create_publisher(msg_type=FloatStamped, topic='/' + vehicle_parameters[
+            'id_vehicle'] + '/CANADAC_Acelerador/Target', qos_profile=HistoryPolicy.KEEP_LAST)
 
         self.timer_heartbit = self.create_timer(1, self.publish_heartbit)
 
     def controller_update(self, data):
         self.controller = data
-        self.pub_enable_throttle.publish(EPOSDigital(
+        self.pub_enable_throttle.publish(BoolStamped(
             header=Header(stamp=self.get_clock().now().to_msg()),
-            enable=self.controller.enable,
-            io_digital=8
+            data=self.controller.enable,
         ))
         if self.controller.enable:
-            self.pub_target.publish(IOAnalogue(
+            self.pub_target.publish(FloatStamped(
                 header=Header(stamp=self.get_clock().now().to_msg()),
-                channel=3,
-                voltage=interp(self.controller.target, (0, 1), self.device_range)
+                data=interp(self.controller.target, (0, 1), self.device_range)
             ))
 
     def publish_heartbit(self):
@@ -75,16 +71,14 @@ class ThrottleNode(Node):
             self.timer_heartbit.cancel()
             # Desactivar EPOS4
             # Desactivar reles
-            self.pub_enable_throttle.publish(EPOSDigital(
+            self.pub_enable_throttle.publish(BoolStamped(
                 header=Header(stamp=self.get_clock().now().to_msg()),
-                enable=False,
-                io_digital=8
+                data=False,
             ))
             # Poner target de motor a 0 por si acaso
-            self.pub_target.publish(IOAnalogue(
+            self.pub_target.publish(FloatStamped(
                 header=Header(stamp=self.get_clock().now().to_msg()),
-                channel=3,
-                voltage=interp(0, (0, 1), self.device_range)
+                data=interp(0, (0, 1), self.device_range)
             ))
         except Exception as e:
             self.logger.error(f'Exception in shutdown: {e}')

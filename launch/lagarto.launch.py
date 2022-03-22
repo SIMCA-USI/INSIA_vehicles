@@ -7,14 +7,14 @@ def generate_launch_description():
     parameters_file_path = '{}/../conf/lagarto.yaml'.format(
         os.path.abspath(os.path.dirname(os.path.realpath(__file__))))
     return LaunchDescription([
-        Node(
-            package='INSIA_control',
-            executable='can',
-            name='CAN_Vehiculo',
-            parameters=[parameters_file_path],
-            output='screen',
-            emulate_tty=True
-        ),
+        # Node(
+        #     package='INSIA_control',
+        #     executable='can',
+        #     name='CAN_Vehiculo',
+        #     parameters=[parameters_file_path],
+        #     output='screen',
+        #     emulate_tty=True
+        # ),
         Node(
             package='INSIA_control',
             executable='can',
@@ -34,7 +34,7 @@ def generate_launch_description():
         Node(
             package='INSIA_control',
             executable='maxon',
-            name='EPOS_Freno',
+            name='MCD60_Freno',
             parameters=[parameters_file_path],
             output='screen',
             emulate_tty=True
@@ -71,30 +71,46 @@ def generate_launch_description():
             output='screen',
             emulate_tty=True
         ),
-        # Node(
-        #     package='INSIA_control',
-        #     executable='brake_imiev',
-        #     name='Brake',
-        #     parameters=[parameters_file_path],
-        #     output='screen',
-        #     emulate_tty=True
-        # ),
-        # Node(
-        #     package='INSIA_control',
-        #     executable='steering_imiev',
-        #     name='Steering',
-        #     parameters=[parameters_file_path],
-        #     output='screen',
-        #     emulate_tty=True
-        # ),
-        # Node(
-        #     package='INSIA_control',
-        #     executable='throttle_imiev',
-        #     name='Throttle',
-        #     parameters=[parameters_file_path],
-        #     output='screen',
-        #     emulate_tty=True
-        # ),
+        Node(
+            package='INSIA_control',
+            executable='brake_lagarto',
+            name='Brake',
+            parameters=[parameters_file_path],
+            output='screen',
+            emulate_tty=True
+        ),
+        Node(
+            package='INSIA_control',
+            executable='steering_lagarto',
+            name='Steering',
+            parameters=[parameters_file_path],
+            output='screen',
+            emulate_tty=True
+        ),
+        Node(
+            package='INSIA_control',
+            executable='throttle_lagarto',
+            name='Throttle',
+            parameters=[parameters_file_path],
+            output='screen',
+            emulate_tty=True
+        ),
+        Node(
+            package='INSIA_control',
+            executable='gears_lagarto',
+            name='Gears',
+            parameters=[parameters_file_path],
+            output='screen',
+            emulate_tty=True
+        ),
+        Node(
+            package='INSIA_control',
+            executable='dumpbox_lagarto',
+            name='DumpBox',
+            parameters=[parameters_file_path],
+            output='screen',
+            emulate_tty=True
+        ),
         # Node(
         #     package='INSIA_control',
         #     executable='longitudinal_control',

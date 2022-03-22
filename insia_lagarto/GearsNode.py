@@ -41,7 +41,7 @@ class Gears_Lagarto(Node):
                                               qos_profile=HistoryPolicy.KEEP_LAST)
 
         self.create_subscription(msg_type=ControladorStr,
-                                 topic='/' + vehicle_parameters['id_vehicle'] + self.get_name(),
+                                 topic='/' + vehicle_parameters['id_vehicle'] + '/' + self.get_name(),
                                  callback=self.control, qos_profile=HistoryPolicy.KEEP_LAST)
 
         self.timer_heartbit = self.create_timer(1, self.publish_heartbit)
@@ -51,7 +51,7 @@ class Gears_Lagarto(Node):
 
     def control(self, controlador):
         try:
-            self.logger.debug(f"Request update gear value to {controlador.target}V")
+            self.logger.debug(f"Request update gear value to {controlador.target}")
             if controlador.target in self.avaliable_gears.keys():
                 target_gear = controlador.target
                 if (self.current_gear in ['D1', 'D2', 'D3', 'D'] and controlador.target in ['R']) \
@@ -68,7 +68,7 @@ class Gears_Lagarto(Node):
                         )
                     )
             else:
-                self.logger.error(f" invalid gear value {controlador.target}V")
+                self.logger.error(f" invalid gear value {controlador.target}")
         except Exception as e:
             self.logger.error(f'Error in gears control: {e}')
         # Cambiar a este modelo si se consigue sacar la marcha del vehiculo
