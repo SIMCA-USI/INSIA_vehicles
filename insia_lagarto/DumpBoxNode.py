@@ -6,8 +6,8 @@ from insia_msg.msg import ControladorStr, StringStamped
 from rclpy.node import Node
 from rclpy.parameter import Parameter
 from rclpy.qos import HistoryPolicy
-from yaml.loader import SafeLoader
 from std_msgs.msg import Header
+from yaml.loader import SafeLoader
 
 
 class DumpBoxLagarto(Node):
@@ -24,18 +24,16 @@ class DumpBoxLagarto(Node):
         self.shutdown_flag = False
         self.target_DumpBox = None
 
-        self.pub_heartbit = self.create_publisher(msg_type=StringStamped,
-                                                  topic='/' + vehicle_parameters['id_vehicle'] + '/Heartbit',
+        self.create_subscription(msg_type=ControladorStr, topic=self.get_name(), callback=self.control,
+                                 qos_profile=HistoryPolicy.KEEP_LAST)
+
+        self.pub_heartbeat = self.create_publisher(msg_type=StringStamped, topic='Heartbeat',
+                                                   qos_profile=HistoryPolicy.KEEP_LAST)
+
+        self.pub_dump_box = self.create_publisher(msg_type=StringStamped, topic='Arduino_DumpBox/Consigna',
                                                   qos_profile=HistoryPolicy.KEEP_LAST)
 
-        self.pub_dump_box = self.create_publisher(msg_type=StringStamped, topic='/' + vehicle_parameters[
-            'id_vehicle'] + '/Arduino_DumpBox/Consigna', qos_profile=HistoryPolicy.KEEP_LAST)
-
-        self.create_subscription(msg_type=ControladorStr,
-                                 topic='/' + vehicle_parameters['id_vehicle'] + '/' + self.get_name(),
-                                 callback=self.control, qos_profile=HistoryPolicy.KEEP_LAST)
-
-        self.timer_heartbit = self.create_timer(1, self.publish_heartbit)
+        self.timer_heartbeat = self.create_timer(1, self.publish_heartbeat)
         self.timer_Dump_box = self.create_timer(1, self.publish_DumpBox)
 
     def control(self, controlador):
@@ -52,12 +50,12 @@ class DumpBoxLagarto(Node):
                 )
             )
 
-    def publish_heartbit(self):
+    def publish_heartbeat(self):
         msg = StringStamped(
             data=self.get_name()
         )
         msg.header.stamp = self.get_clock().now().to_msg()
-        self.pub_heartbit.publish(msg)
+        self.pub_heartbeat.publish(msg)
 
     def shutdown(self):
         try:
