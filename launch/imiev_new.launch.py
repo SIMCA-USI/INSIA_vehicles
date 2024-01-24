@@ -33,7 +33,7 @@ def generate_launch_description():
         ),
         Node(
             package='INSIA_control',
-            executable='vehicledecoder_base',
+            executable='telemetry_imiev',
             name='ImievDecoder',
             parameters=[parameters_file_path],
             output='screen',
