@@ -151,9 +151,9 @@ def generate_launch_description():
                 get_package_share_directory('ros2_waypoints'),
                 '/launch/waypoints_recorder.launch.py'])
         ),
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([
-                get_package_share_directory('ros2_sensors'),
-                '/gps_ip.launch.py'])
-        ),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource([
+        #         get_package_share_directory('ros2_sensors'),
+        #         '/gps_ip.launch.py'])
+        # ),
     ])
