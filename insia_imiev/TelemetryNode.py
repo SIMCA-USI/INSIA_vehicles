@@ -45,10 +45,12 @@ class VehicleNode(Node):
         for field in fields.keys():
             data = self.vehicle_state.get(field)
             if data is not None:
+                if field == 'throttle':
+                    data = max(data, 0)
                 try:
                     setattr(msg, field, convert_types(ros2_type=fields.get(field), data=data))
                 except Exception as e:
-                    self.logger.error(f'Error setting atributes {e}')
+                    self.logger.error(f'Error setting atributes {e} {data} {field}')
 
         msg.header = Header(stamp=self.get_clock().now().to_msg())
         msg.id_plataforma = self.id_plataforma
