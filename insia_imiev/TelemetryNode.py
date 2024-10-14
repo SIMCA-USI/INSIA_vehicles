@@ -26,6 +26,8 @@ class VehicleNode(Node):
         self.logger.set_level(self._log_level.value)
         self.shutdown_flag = False
         self.decoder = Decoder(dictionary=self.get_parameter('dictionary').value)
+
+
         self.vehicle_state = {}
         self.steering_wheel_conversion = vehicle_parameters['steering']['steering_wheel_conversion']
 
@@ -45,6 +47,8 @@ class VehicleNode(Node):
         for field in fields.keys():
             data = self.vehicle_state.get(field)
             if data is not None:
+                if field == 'throttle':
+                    data= max(data,0)
                 try:
                     setattr(msg, field, convert_types(ros2_type=fields.get(field), data=data))
                 except Exception as e:

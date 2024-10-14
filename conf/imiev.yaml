@@ -65,6 +65,11 @@ imiev:
         td: 0.
         windup: 0.3
       brake:
+        #follow-me
+#        kp: 6.
+#        ti: 4.
+#        td: 0.
+        #normal
         kp: 2.
         ti: 3.
         td: 0.
@@ -74,10 +79,14 @@ imiev:
     ros__parameters:
       log_level: 0
       steering:
+        # Follow
+#        kp: 5.
+#        ti: 0.
+#        td: 0.
         # A6
-        #        kp: 10
-        #        ti: 8
-        #        td: 0.03
+        #kp: 10
+        #ti: 8
+        #td: 0.03
         # Pista
         kp: 1.0
         ti: 1.0
@@ -91,4 +100,4 @@ imiev:
         ttl: 1
       tele:
         mode: 'wheels'
-        ttl: 1
+        ttl: 0
