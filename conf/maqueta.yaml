@@ -1,9 +1,13 @@
 gdels:
+  can_control:
+    ros__parameters:
+      log_level: 0
+      can: can1
   CANADAC_Acelerador:
     ros__parameters:
       log_level: 10
       cobid: 5
-      can: CAN_Control
+      can: can_control
   LagartoDecoder:
     ros__parameters:
       log_level: 0
@@ -17,7 +21,7 @@ gdels:
       auto_fault_reset: True
       speed: 5000
       dictionary: epos_dictionary.yaml
-      can: CAN_Control
+      can: can_control
       digital_outputs: 4
       factor: 1
   MCD60_Freno:
@@ -29,7 +33,7 @@ gdels:
       auto_fault_reset: True
       speed: 5000
       dictionary: epos_dictionary.yaml
-      can: CAN_Control
+      can: can_control
       digital_outputs: 4
       factor: 1
   Brake:
