@@ -16,6 +16,7 @@ def generate_launch_description():
             name='CAN_MUTT',
             parameters=[parameters_file_path],
             output='screen',
+            namespace='MUTT',
             emulate_tty=True
         ),
         Node(
@@ -23,6 +24,7 @@ def generate_launch_description():
             executable='telemetry_mutt',
             name='VehicleDecoderMUTT',
             parameters=[parameters_file_path],
+            namespace='MUTT',
             output='screen',
             emulate_tty=True
         ),
@@ -30,6 +32,7 @@ def generate_launch_description():
             package='INSIA_control',
             executable='canadac_mutt',
             parameters=[parameters_file_path],
+            namespace='MUTT',
             output='screen',
             emulate_tty=True
         ),
@@ -37,6 +40,7 @@ def generate_launch_description():
             package='INSIA_control',
             executable='device_mutt',
             parameters=[parameters_file_path],
+            namespace='MUTT',
             output='screen',
             emulate_tty=True
         ),
@@ -44,7 +48,20 @@ def generate_launch_description():
             package='INSIA_control',
             executable='control_mutt',
             parameters=[parameters_file_path],
+            namespace='MUTT',
             output='screen',
+            emulate_tty=True
+        ),
+        Node(
+            package='INSIA_control',
+            executable='decision_mutt',
+            name='Decision',
+            parameters=[parameters_file_path],
+            namespace='MUTT',
+            output='screen',
+            remappings=[
+                ('PathPlanning', 'WP/Result')
+            ],
             emulate_tty=True
         ),
     ])
