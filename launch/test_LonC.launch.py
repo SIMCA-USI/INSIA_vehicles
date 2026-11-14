@@ -8,7 +8,7 @@ def generate_launch_description():
         os.path.abspath(os.path.dirname(os.path.realpath(__file__))))
     return LaunchDescription([
         Node(
-            package='INSIA_control',
+            package='insia_emt',
             executable='brake_emt',
             name='Brake',
             parameters=[parameters_file_path],
@@ -16,7 +16,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_emt',
             executable='throttle_emt',
             name='Throttle',
             parameters=[parameters_file_path],
