@@ -32,7 +32,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_imiev',
             executable='telemetry_imiev',
             name='ImievDecoder',
             parameters=[parameters_file_path],
@@ -56,7 +56,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_imiev',
             executable='brake_imiev',
             name='Brake',
             parameters=[parameters_file_path],
@@ -64,7 +64,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_imiev',
             executable='steering_imiev',
             name='Steering',
             parameters=[parameters_file_path],
@@ -72,7 +72,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_imiev',
             executable='throttle_imiev_new',
             name='Throttle',
             parameters=[parameters_file_path],

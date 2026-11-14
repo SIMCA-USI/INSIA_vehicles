@@ -32,7 +32,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_imiev',
             executable='throttle_imiev_new',
             name='Throttle',
             parameters=[parameters_file_path],
