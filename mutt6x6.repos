@@ -1,0 +1,11 @@
+# Repositorios que necesita el vehiculo mutt6x6. Se descargan con:
+#   cd ~/ros2_ws/src && vcs import < insia_mutt6x6/mutt6x6.repos
+repositories:
+  INSIA_control:
+    type: git
+    url: https://github.com/SIMCA-USI/INSIA_control.git
+    version: develop
+  insia_msg:
+    type: git
+    url: https://github.com/SIMCA-USI/INSIA_msg.git
+    version: master

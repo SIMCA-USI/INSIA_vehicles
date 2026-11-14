@@ -20,7 +20,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt6x6',
             executable='telemetry_mutt',
             name='VehicleDecoderMUTT',
             parameters=[parameters_file_path],
@@ -29,7 +29,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt6x6',
             executable='canadac_mutt',
             parameters=[parameters_file_path],
             output='screen',
@@ -37,7 +37,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt6x6',
             executable='device_mutt',
             parameters=[parameters_file_path],
             output='screen',
@@ -45,7 +45,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt6x6',
             executable='control_mutt_actuators',
             parameters=[parameters_file_path],
             output='screen',
