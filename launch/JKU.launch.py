@@ -16,7 +16,7 @@ def generate_launch_description():
             executable='car_state_listener_node',
         ),
         Node(
-            package='INSIA_control',
+            package='insia_jku',
             executable='joy_transformer',
             name='Joy'
         ),

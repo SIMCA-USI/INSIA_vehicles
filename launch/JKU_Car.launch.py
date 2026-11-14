@@ -24,7 +24,7 @@ def generate_launch_description():
         # ),
         # Telemetry node to get data from openpilot
         Node(
-            package='INSIA_control',
+            package='insia_jku',
             executable='telemetry_jku_car',
             name='VehicleDecoder',
             parameters=[parameters_file_path],
@@ -33,7 +33,7 @@ def generate_launch_description():
         ),
         # Convert joy data to PetConduction
         Node(
-            package='INSIA_control',
+            package='insia_jku',
             executable='joy_transformer_pet',
             name='Joy',
             output='screen',
@@ -54,7 +54,7 @@ def generate_launch_description():
         ),
         # Accel node to transform Controller msgs to openpilot msgs
         Node(
-            package='INSIA_control',
+            package='insia_jku',
             executable='accel_jku_car',
             name='Speed',
             parameters=[parameters_file_path],
@@ -63,7 +63,7 @@ def generate_launch_description():
         ),
         # Steering node to transform Controller msgs to openpilot msgs
         Node(
-            package='INSIA_control',
+            package='insia_jku',
             executable='steering_jku_car',
             name='Steering',
             parameters=[parameters_file_path],

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>insia_jku</name>
+  <version>1.0.0</version>
+  <description>Nodos, lanzadores y configuracion del vehiculo jku para INSIA_control</description>
+  <maintainer email="alfredo.valle@upm.es">Alfredo Valle Barrio</maintainer>
+  <license>GPL-3.0-only</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>INSIA_control</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
