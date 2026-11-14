@@ -11,7 +11,7 @@ def generate_launch_description():
         os.path.abspath(os.path.dirname(os.path.realpath(__file__))))
     return LaunchDescription([
         Node(
-            package='INSIA_control',
+            package='insia_mutt8x8',
             executable='telemetry_mutt',
             name='VehicleDecoderMUTT',
             parameters=[parameters_file_path],
@@ -20,7 +20,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt8x8',
             executable='canadac_mutt',
             parameters=[parameters_file_path],
             namespace='MUTT',
@@ -28,7 +28,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt8x8',
             executable='device_mutt',
             parameters=[parameters_file_path],
             namespace='MUTT',
@@ -36,7 +36,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt8x8',
             executable='control_mutt',
             name='Control_MUTT',
             parameters=[parameters_file_path],
@@ -45,7 +45,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_mutt8x8',
             executable='decision_mutt',
             name='Decision',
             parameters=[parameters_file_path],
