@@ -19,7 +19,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ascod',
             executable='telemetry_ascod',
             name='VehicleDecoder',
             parameters=[parameters_file_path],

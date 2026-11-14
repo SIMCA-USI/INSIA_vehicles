@@ -35,7 +35,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ascod',
             executable='telemetry_ascod',
             name='VehicleDecoder',
             parameters=[parameters_file_path],
@@ -75,7 +75,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ascod',
             executable='brake_ascod',
             name='Brake',
             parameters=[parameters_file_path],
@@ -83,7 +83,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ascod',
             executable='steering_ascod',
             name='Steering',
             parameters=[parameters_file_path],
@@ -91,7 +91,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ascod',
             executable='throttle_ascod',
             name='Throttle',
             parameters=[parameters_file_path],
@@ -99,7 +99,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ascod',
             executable='gears_ascod',
             name='Gears',
             parameters=[parameters_file_path],
