@@ -22,7 +22,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='telemetry_ravo',
             name='Telemetry',
             namespace=namespace,

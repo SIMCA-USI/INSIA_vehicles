@@ -18,7 +18,7 @@ def generate_launch_description():
                 '/ravo_socketcan.launch.py'])
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='telemetry_ravo',
             name='Telemetry',
             namespace=namespace,
@@ -49,7 +49,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='brake_ravo',
             name='Brake',
             namespace=namespace,
@@ -67,7 +67,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='throttle_ravo',
             name='Throttle',
             namespace=namespace,
@@ -85,7 +85,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='steering_ravo',
             name='Steering',
             namespace=namespace,

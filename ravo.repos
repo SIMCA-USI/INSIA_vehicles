@@ -1,0 +1,15 @@
+# Repositorios que necesita el vehiculo ravo. Se descargan con:
+#   cd ~/ros2_ws/src && vcs import < insia_ravo/ravo.repos
+repositories:
+  INSIA_control:
+    type: git
+    url: https://github.com/SIMCA-USI/INSIA_control.git
+    version: develop
+  insia_msg:
+    type: git
+    url: https://github.com/SIMCA-USI/INSIA_msg.git
+    version: master
+  ros2socketcan_bridge:
+    type: git
+    url: https://github.com/SIMCA-USI/ros2socketcan_bridge.git
+    version: master

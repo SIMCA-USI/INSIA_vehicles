@@ -14,7 +14,7 @@ def generate_launch_description():
     return LaunchDescription([
 
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='manual_ravo',
             name='TriggerManual',
             namespace='ravo',

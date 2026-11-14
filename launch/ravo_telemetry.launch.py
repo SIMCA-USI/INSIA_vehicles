@@ -18,7 +18,7 @@ def generate_launch_description():
                 '/ravo_socketcan.launch.py'])
         ),
         Node(
-            package='INSIA_control',
+            package='insia_ravo',
             executable='telemetry_ravo',
             name='Telemetry',
             namespace=namespace,
