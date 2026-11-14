@@ -64,7 +64,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_lagarto',
             executable='telemetry_lagarto',
             name='LagartoDecoder',
             parameters=[parameters_file_path],
@@ -72,7 +72,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_lagarto',
             executable='brake_lagarto',
             name='Brake',
             parameters=[parameters_file_path],
@@ -80,7 +80,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_lagarto',
             executable='steering_lagarto',
             name='Steering',
             parameters=[parameters_file_path],
@@ -88,7 +88,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_lagarto',
             executable='throttle_lagarto',
             name='Throttle',
             parameters=[parameters_file_path],
@@ -96,7 +96,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_lagarto',
             executable='gears_lagarto',
             name='Gears',
             parameters=[parameters_file_path],
@@ -104,7 +104,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_lagarto',
             executable='dumpbox_lagarto',
             name='DumpBox',
             parameters=[parameters_file_path],

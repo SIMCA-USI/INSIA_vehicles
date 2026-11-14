@@ -1,4 +1,5 @@
 import os
+from INSIA_control.utils.rutas import ruta_diccionario
 
 import rclpy
 import yaml
@@ -24,8 +25,8 @@ class Gears_Lagarto(Node):
         self.shutdown_flag = False
         self.telemetry = Telemetry()
         self.current_gear = 'N'  # Eliminar cuando se recojan las marchas del vehiculo
-        with open(os.getenv('ROS_WS') + '/src/INSIA_control/INSIA_control/diccionarios/' + self.get_parameter(
-                'dictionary').value) as f:
+        with open(ruta_diccionario(self.get_parameter(
+                'dictionary').value)) as f:
             self.avaliable_gears = yaml.load(f, Loader=yaml.FullLoader)
 
         self.create_subscription(msg_type=Telemetry, topic='Telemetry', callback=self.telemetry_callback,
