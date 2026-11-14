@@ -1,0 +1,11 @@
+# Repositorios que necesita el vehiculo maqueta. Se descargan con:
+#   cd ~/ros2_ws/src && vcs import < insia_maqueta/maqueta.repos
+repositories:
+  INSIA_control:
+    type: git
+    url: https://github.com/SIMCA-USI/INSIA_control.git
+    version: develop
+  insia_msg:
+    type: git
+    url: https://github.com/SIMCA-USI/INSIA_msg.git
+    version: master

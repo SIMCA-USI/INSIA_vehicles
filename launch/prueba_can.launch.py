@@ -48,7 +48,7 @@ def generate_launch_description():
             emulate_tty=True
         ),
         Node(
-            package='INSIA_control',
+            package='insia_maqueta',
             executable='brake_maqueta',
             name='Brake',
             parameters=[parameters_file_path],
